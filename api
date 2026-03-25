@@ -1,0 +1,27 @@
+// JavaScript Example: Reading Entities
+// Filterable fields: date_of_birth, gender, blood_type, height_cm, weight_kg, allergies, chronic_conditions, current_medications, emergency_contact_name, emergency_contact_phone, simplified_mode
+async function fetchHealthProfileEntities() {
+    const response = await fetch(`/api/apps/68fbc1d2a6109bbee636ea7b/entities/HealthProfile`, {
+        headers: {
+            'api_key': 'dc0f02a258554acb98b40a565460f840', // or use await User.me() to get the API key
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+// JavaScript Example: Updating an Entity
+// Filterable fields: date_of_birth, gender, blood_type, height_cm, weight_kg, allergies, chronic_conditions, current_medications, emergency_contact_name, emergency_contact_phone, simplified_mode
+async function updateHealthProfileEntity(entityId, updateData) {
+    const response = await fetch(`/api/apps/68fbc1d2a6109bbee636ea7b/entities/HealthProfile/${entityId}`, {
+        method: 'PUT',
+        headers: {
+            'api_key': 'dc0f02a258554acb98b40a565460f840', // or use await User.me() to get the API key
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updateData)
+    });
+    const data = await response.json();
+    console.log(data);
+}
